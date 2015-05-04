@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Caffeine vs. Calories</title>
 	</head>
-<body>
+<body class="row">
 
 <!-- D3, jQuery, jQuery UI, jQuery CSS, Bootstrap links -->
 	<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -20,12 +20,32 @@
 
 	<main class="container-fluid">
 		<header class="row"></header>
-		<h1>dong</h1>
 
 		<section class="row">
-			<div class="col-md-9" id="graph"></div>
+			<div class="col-md-9" id="graph">
 
-			<div class="col-md-3" id="interactions"></div>
+				<label for = "type>">Beverage Type</label>
+					<input type="text" id="mytype" readonly style = "border:0; color:#f6931f; font-weight:bold;>"><br>
+					<select id="myselectform">
+						<option value = "all">All</option>
+						<option value = "coffee">Coffee</option>
+						<option value = "espresso">Espresso</option>
+						<option value = "espresso milk">Espresso with Milk</option>
+						<option value = "frap">Frappuccino</option>
+						<option value = "energy">Energy Drink</option>
+						<option value = "pain">Pain Reliever</option>
+						<option value = "tea">Tea</option>
+						<option value = "tea latte">Tea Latte</option>
+						<option value = "steam">Steamed Drink</option>
+						<option value = "soda">Soda</option>
+						<option value = "food">Food</option>
+					</select>
+
+			</div>
+
+			<div class="col-md-3" id="interactions">
+
+			</div>
 
 		</section>
 
