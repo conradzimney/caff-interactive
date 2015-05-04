@@ -7,45 +7,52 @@
 	</head>
 <body class="row">
 
-	<label for = "type" id="bev">Beverage Type</label>
-		<input type="text" id="mytype" readonly style = "border:0; color:#f6931f; font-weight:bold;"><br>
-		<select id = "myselectform">
-			<option value = "All">All</option>
-			<option value = "Coffee">Coffee</option>
-			<option value = "Espresso">Espresso</option>
-			<option value = "Espresso with Milk">Espresso with Milk</option>
-			<option value = "Frappuccino">Frappuccino</option>
-			<option value = "Energy Drink">Energy Drink</option>
-			<option value = "Pain Reliever">Pain Reliever</option>
-			<option value = "Tea">Tea</option>
-			<option value = "Tea Latte">Tea Latte</option>
-			<option value = "Steamed Drink">Steamed Drink</option>
-			<option value = "Soda">Soda</option>
-			<option value = "Food">Food</option>
-		</select>
-
 	<main class="container-fluid">
 		<header class="row"></header>
 
-		<section class="row" id="lower">
-			<div class="col-md-9" id="graph">
+		<div class="row">
+			<div class="col-sm-8" id="graph">
 
 			</div>
 
-			<div class="col-md-3" id="interactions">
+			<div class="col-sm-3" id="interactions">
+
 				<p>Caffeine</p>
 				<div id="caff" class="slider-range"></div>
 				<label for="caffamount">Caffeine Range:</label>
 				<input type="text" id="caffamount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+
+				<p>Calories</p>
+				<div id="cal" class="slider-range"></div>
+				<label for="calamount">Calories Range:</label>
+				<input type="text" id="calamount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+
+				<label for = "type" >Beverage Type</label>
+					<input type="text" id="mytype" id="bev" readonly style = "border:0; color:#f6931f; font-weight:bold;"><br>
+						<select id = "myselectform">
+							<option value = "All">All</option>
+							<option value = "Coffee">Coffee</option>
+							<option value = "Espresso">Espresso</option>
+							<option value = "Espresso with Milk">Espresso with Milk</option>
+							<option value = "Frappuccino">Frappuccino</option>
+							<option value = "Energy Drink">Energy Drink</option>
+							<option value = "Pain Reliever">Pain Reliever</option>
+							<option value = "Tea">Tea</option>
+							<option value = "Tea Latte">Tea Latte</option>
+							<option value = "Steamed Drink">Steamed Drink</option>
+							<option value = "Soda">Soda</option>
+							<option value = "Food">Food</option>
+						</select>				
 			</div>
 
-		</section>
+		</div>
 
 		<footer class="row"></footer>
 	</main>
 
 	<!-- D3, jQuery, jQuery UI, jQuery CSS, Bootstrap links -->
 		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>

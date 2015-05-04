@@ -5,10 +5,7 @@ var h = 500 - margin.top - margin.bottom;
 var tooltipX = 778;
 var tooltipY = 79;
 
-var col = d3.scale.category10();
-
-
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#graph").append("svg")
  	.attr("width", w + margin.left + margin.right)
     .attr("height", h + margin.top + margin.bottom)
   	.append("g")
@@ -59,17 +56,36 @@ d3.csv("Caffeine.csv", function(error, drinks) {
     if (error) {
     	return console.warn(error);
     }
-    //console.log(stocks);
     drinks.forEach(function(d) {
-  	    //console.log(d);
       	d.Caffeine = +d.Caffeine;
       	d.Calories = +d.Calories;
+      	if (d["Type"] == "Coffee") {
+      		d.color = "#843c39";
+      	} else if (d["Type"] == "Espresso") {
+      		d.color = "#8c6d31"
+      	} else if (d["Type"] == "Espresso with Milk") {
+      		d.color = "#e7ba52"
+      	} else if (d["Type"] == "Tea") {
+      		d.color = "#b5cf6b"
+      	} else if (d["Type"] == "Tea Latte") {
+      		d.color = "#637939"
+      	} else if (d["Type"] == "Steamed Drink") {
+      		d.color = "#9c9ede"
+      	} else if (d["Type"] == "Frappuccino") {
+      		d.color = "#393b79"
+      	} else if (d["Type"] == "Soda") {
+      		d.color = "#de9ed6"
+      	} else if (d["Type"] == "Food") {
+      		d.color = "#843c39"
+      	} else if (d["Type"] == "Energy Drink") {
+      		d.color = "#7b4173"
+      	} else if (d["Type"] == "Pain Reliever") {
+      		d.color = "#e7969c"
+      	}
     });
     dataset = drinks;
     drawVis(dataset);
   });
-
-
 
 // Function for interactivity:
 
@@ -79,19 +95,19 @@ function drawVis(data) {
   	circles
     	.attr("cx", function(d) { return x(d.Caffeine);  })
     	.attr("cy", function(d) { return y(d.Calories);  })
-    	.style("fill", function(d) {return col(d.Type);});	// Determines color
+    	.style("fill", function(d) {return d.color;});	// Determines color
   	circles.exit().remove();
 
  	circles.enter().append("circle")
 	    .attr("cx", function(d) { return x(d.Caffeine);  })
 	    .attr("cy", function(d) { return y(d.Calories);  })
 	    .attr("r", 4)
-	    .style("fill", function(d) {return col(d.Type);})	// Determines color
+	    .style("fill", function(d) {return d.color;})	// Determines color
 	    .style("opacity", 0.75)
 	    .style("stroke", "black");
   	circles 
   	.on("mouseover", function(d,i) {
-    	d3.select(this).attr("r",8);
+    	d3.select(this).attr("r", 9);
     	tooltip.transition()
       	.duration(200)
       	.style("opacity", 1);
@@ -130,6 +146,7 @@ function filterType(myType) {
 var attributes = ["Caffeine", "Calories"];
 var ranges = [[0,340],[0,700]];
 var maxCaff = 340;
+var maxCal = 700;
 
 $(function() {
     $( "#caff" ).slider({
@@ -139,14 +156,27 @@ $(function() {
       	values: [ 0, maxCaff ],
       	slide: function( event, ui ) {
         	$( "#caffamount" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-        	filterData("caff", ui.values);
+        	filterData("Caffeine", ui.values);
       	}
     });
     $( "#caffamount" ).val( $( "#caff" ).slider( "values", 0 ) +
       		" - " + $( "#caff" ).slider( "values", 1 ) );
 });
 
-drawVis(dataset);
+$(function() {
+    $( "#cal" ).slider({
+        range: true,
+      	min:  0,
+      	max: maxCal,
+      	values: [ 0, maxCal ],
+      	slide: function( event, ui ) {
+        	$( "#calamount" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+        	filterData("Calories", ui.values);
+      	}
+    });
+    $( "#calamount" ).val( $( "#cal" ).slider( "values", 0 ) +
+      		" - " + $( "#cal" ).slider( "values", 1 ) );
+});
 
 function filterData(attr, values){
 	for (i = 0; i < attributes.length; i++){

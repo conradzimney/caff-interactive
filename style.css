@@ -27,8 +27,11 @@ body {
 
 #bev {
 	margin-left: 20px;
+	padding-bottom: 15px;
 }
 
 #interactions {
+	padding-top: 250px;
 	margin-right: 10px;
+	padding-left: 30px;
 }
