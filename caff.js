@@ -107,44 +107,65 @@ function drawVis(data) {
   });
 }
 
-var mytype ="all";
-var patt = new RegExp("all");
+var mytype ="All";
+var patt = new RegExp("All");
 
-$("#myselectform").onchange = function() {
+document.getElementById("myselectform").onchange = function() {
     filterType(this.value);
 }
 
 function filterType(myType) {
-  mytype = myType;
-  var res = patt.test(mytype);
-  if(res){
-    var toVisualize = dataset;
-  } else {
-    var toVisualize = dataset.filter(function(d,i) {
-      return d["type"] == mytype;
-    });
-  }
-drawVis(toVisualize);
+  	mytype = myType;
+  	var res = patt.test(mytype);
+  	if(res){
+    	var toVisualize = dataset;
+  	} else {
+    	var toVisualize = dataset.filter(function(d,i) {
+      		return d["Type"] == mytype;
+    	});
+  	}
+	drawVis(toVisualize);
 }
 
+var attributes = ["Caffeine", "Calories"];
+var ranges = [[0,340],[0,700]];
+var maxCaff = 340;
+
+$(function() {
+    $( "#caff" ).slider({
+        range: true,
+      	min:  0,
+      	max: maxCaff,
+      	values: [ 0, maxCaff ],
+      	slide: function( event, ui ) {
+        	$( "#caffamount" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+        	filterData("caff", ui.values);
+      	}
+    });
+    $( "#caffamount" ).val( $( "#caff" ).slider( "values", 0 ) +
+      		" - " + $( "#caff" ).slider( "values", 1 ) );
+});
+
+drawVis(dataset);
+
 function filterData(attr, values){
-  for (i = 0; i < attributes.length; i++){
-    if (attr == attributes[i]){
-      ranges[i] = values;
-    }
-  }
-  var res = patt.test(mytype);
-  if(res){
-    var toVisualize = dataset.filter(function(d) { 
-    return d[attr] >= values[0] && d[attr] <= values[1];
-    //return isInRange(d)
-    }); 
-  }else{
-    var toVisualize = dataset.filter(function(d) { 
-    return d[attr] >= values[0] && d[attr] <= values[1] && d["type"]==mytype;
-  });
-  }
-  drawVis(toVisualize);
+	for (i = 0; i < attributes.length; i++){
+    	if (attr == attributes[i]){
+      		ranges[i] = values;
+    	}
+  	}
+  	var res = patt.test(mytype);
+  	if(res){
+    	var toVisualize = dataset.filter(function(d) { 
+    		return d[attr] >= values[0] && d[attr] <= values[1];
+    		//return isInRange(d)
+    	}); 
+  	} else {
+    	var toVisualize = dataset.filter(function(d) { 
+    		return d[attr] >= values[0] && d[attr] <= values[1] && d["Type"]== mytype;
+  		});
+  	}
+  	drawVis(toVisualize);
 }
 
 

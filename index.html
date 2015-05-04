@@ -7,49 +7,54 @@
 	</head>
 <body class="row">
 
-<!-- D3, jQuery, jQuery UI, jQuery CSS, Bootstrap links -->
-	<script src="http://d3js.org/d3.v3.min.js"></script>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<!-- Local Javascript and CSS scripts -->
-	<script type="text/javascript" src="caff.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<label for = "type" id="bev">Beverage Type</label>
+		<input type="text" id="mytype" readonly style = "border:0; color:#f6931f; font-weight:bold;"><br>
+		<select id = "myselectform">
+			<option value = "All">All</option>
+			<option value = "Coffee">Coffee</option>
+			<option value = "Espresso">Espresso</option>
+			<option value = "Espresso with Milk">Espresso with Milk</option>
+			<option value = "Frappuccino">Frappuccino</option>
+			<option value = "Energy Drink">Energy Drink</option>
+			<option value = "Pain Reliever">Pain Reliever</option>
+			<option value = "Tea">Tea</option>
+			<option value = "Tea Latte">Tea Latte</option>
+			<option value = "Steamed Drink">Steamed Drink</option>
+			<option value = "Soda">Soda</option>
+			<option value = "Food">Food</option>
+		</select>
 
 	<main class="container-fluid">
 		<header class="row"></header>
 
-		<section class="row">
+		<section class="row" id="lower">
 			<div class="col-md-9" id="graph">
-
-				<label for = "type>">Beverage Type</label>
-					<input type="text" id="mytype" readonly style = "border:0; color:#f6931f; font-weight:bold;>"><br>
-					<select id="myselectform">
-						<option value = "all">All</option>
-						<option value = "coffee">Coffee</option>
-						<option value = "espresso">Espresso</option>
-						<option value = "espresso milk">Espresso with Milk</option>
-						<option value = "frap">Frappuccino</option>
-						<option value = "energy">Energy Drink</option>
-						<option value = "pain">Pain Reliever</option>
-						<option value = "tea">Tea</option>
-						<option value = "tea latte">Tea Latte</option>
-						<option value = "steam">Steamed Drink</option>
-						<option value = "soda">Soda</option>
-						<option value = "food">Food</option>
-					</select>
 
 			</div>
 
 			<div class="col-md-3" id="interactions">
-
+				<p>Caffeine</p>
+				<div id="caff" class="slider-range"></div>
+				<label for="caffamount">Caffeine Range:</label>
+				<input type="text" id="caffamount" readonly style="border:0; color:#f6931f; font-weight:bold;">
 			</div>
 
 		</section>
 
 		<footer class="row"></footer>
 	</main>
+
+	<!-- D3, jQuery, jQuery UI, jQuery CSS, Bootstrap links -->
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Local Javascript and CSS scripts -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="caff.js"></script>
+
+
 </body>
 </html>
