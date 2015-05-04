@@ -101,7 +101,7 @@ function drawVis(data) {
  	circles.enter().append("circle")
 	    .attr("cx", function(d) { return x(d.Caffeine);  })
 	    .attr("cy", function(d) { return y(d.Calories);  })
-	    .attr("r", 4)
+	    .attr("r", 5)
 	    .style("fill", function(d) {return d.color;})	// Determines color
 	    .style("opacity", 0.75)
 	    .style("stroke", "black");
@@ -116,7 +116,7 @@ function drawVis(data) {
       		.style("top", tooltipY+"px");
   })
   	.on("mouseout", function(d,i) {
-    	d3.select(this).attr("r",4);
+    	d3.select(this).attr("r",5);
     	tooltip.transition()
       		.duration(500)
       		.style("opacity", 0)
@@ -147,6 +147,7 @@ var attributes = ["Caffeine", "Calories"];
 var ranges = [[0,340],[0,700]];
 var maxCaff = 340;
 var maxCal = 700;
+var values;
 
 $(function() {
     $( "#caff" ).slider({
@@ -159,8 +160,7 @@ $(function() {
         	filterData("Caffeine", ui.values);
       	}
     });
-    $( "#caffamount" ).val( $( "#caff" ).slider( "values", 0 ) +
-      		" - " + $( "#caff" ).slider( "values", 1 ) );
+    $( "#caffamount" ).val( $( "#caff" ).slider( "values", 0 ) + " - " + $( "#caff" ).slider( "values", 1 ) );
 });
 
 $(function() {
@@ -174,25 +174,24 @@ $(function() {
         	filterData("Calories", ui.values);
       	}
     });
-    $( "#calamount" ).val( $( "#cal" ).slider( "values", 0 ) +
-      		" - " + $( "#cal" ).slider( "values", 1 ) );
+    $( "#calamount" ).val( $( "#cal" ).slider( "values", 0 ) + " - " + $( "#cal" ).slider( "values", 1 ) );
 });
 
 function filterData(attr, values){
 	for (i = 0; i < attributes.length; i++){
     	if (attr == attributes[i]){
       		ranges[i] = values;
-    	}
+    	} 
   	}
   	var res = patt.test(mytype);
   	if(res){
     	var toVisualize = dataset.filter(function(d) { 
-    		return d[attr] >= values[0] && d[attr] <= values[1];
+    		return (d["Caffeine"] >= ranges[0][0] && d["Caffeine"] <= ranges[0][1]) && (d["Calories"] >= ranges[1][0] && d["Calories"] <= ranges[1][1]);
     		//return isInRange(d)
     	}); 
   	} else {
     	var toVisualize = dataset.filter(function(d) { 
-    		return d[attr] >= values[0] && d[attr] <= values[1] && d["Type"]== mytype;
+    		return (d["Caffeine"] >= ranges[0][0] && d["Caffeine"] <= ranges[0][1]) && (d["Calories"] >= ranges[1][0] && d["Calories"] <= ranges[1][1]) && d["Type"]== mytype;
   		});
   	}
   	drawVis(toVisualize);
