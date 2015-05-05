@@ -1,6 +1,6 @@
 var margin = {top: 20, right: 20, bottom: 60, left: 50};
 var w = 750 - margin.left - margin.right;
-var h = 708 - margin.top - margin.bottom;
+var h = 684 - margin.top - margin.bottom;
 
 var svg = d3.select("#graph").append("svg")
  	.attr("width", w + margin.left + margin.right)
