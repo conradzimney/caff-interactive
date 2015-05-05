@@ -138,13 +138,15 @@ function filterType(myType) {
     	});
   	}
 	drawVis(toVisualize);
+	resetCaffSlider();
+	resetCalSlider();
 }
 
 var attributes = ["Caffeine", "Calories"];
 var ranges = [[0,340],[0,700]];
 var maxCaff = 340;
 var maxCal = 700;
-var values;
+var dataguys;
 
 $(function() {
     $("#caff").slider({
@@ -192,6 +194,18 @@ function filterData(attr, values){
   		});
   	}
   	drawVis(toVisualize);
+}
+
+function resetCaffSlider() {
+  var $slider = $("#caff");
+  $slider.slider("values", 0, 0);
+  $slider.slider("values", 1, 340);
+}
+
+function resetCalSlider() {
+  var $slider = $("#cal");
+  $slider.slider("values", 0, 0);
+  $slider.slider("values", 1, 700);
 }
 
 
