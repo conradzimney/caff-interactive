@@ -15,7 +15,7 @@ body {
 
 .tooltip {
 	position: absolute;
-	width: 200px;
+	width: 250px;
 	height: 50px;
 	pointer-events: none;
 	border-style: none;
@@ -23,15 +23,27 @@ body {
 
 #myselectform {
 	margin-left: 20px;
+	padding-bottom: 10px;
 }
 
-#bev {
-	margin-left: 20px;
-	padding-bottom: 15px;
+
+#mytype {
+	position: left;
+	padding-bottom: 10px;
+
 }
 
 #interactions {
+	border-radius: 25px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: lightgrey;
 	padding-top: 250px;
 	margin-right: 10px;
 	padding-left: 30px;
+}
+
+.tooltip {
+	left: 30px;
+	top: 40px;	
 }

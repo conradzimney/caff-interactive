@@ -2,8 +2,8 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50};
 var w = 750 - margin.left - margin.right;
 var h = 500 - margin.top - margin.bottom;
 
-var tooltipX = 778;
-var tooltipY = 79;
+// var tooltipX = 778;
+// var tooltipY = 79;
 
 var svg = d3.select("#graph").append("svg")
  	.attr("width", w + margin.left + margin.right)
@@ -25,7 +25,7 @@ var yAxis = d3.svg.axis()
   	.scale(y)
   	.orient("left");
 
-var tooltip = d3.select("body").append("div")
+var tooltip = d3.select("tooltip").append("div")
 	.attr("class", "tooltip")
   	.style("opactiy", 0);
 
@@ -42,7 +42,7 @@ svg.append("g")
     .attr("class", "axis")
     .call(yAxis)
   .append("text")
-    .attr("transform", "rotate(-90)")
+    .attr("transform", "translate(45,0)")
     .attr("y", 6)
     .attr("dy",".71em")
     .style("text-anchor", "end")
@@ -109,16 +109,16 @@ function drawVis(data) {
   	.on("mouseover", function(d,i) {
     	d3.select(this).attr("r", 9);
     	tooltip.transition()
-      	.duration(200)
+      	.duration(300)
       	.style("opacity", 1);
     	tooltip.html("<b>"+d.Coffee+"</b><br>Calories: "+d.Calories+"<br>Caffeine: "+d.Caffeine) // This will need more info later
-      		.style("left", tooltipX+"px")
-      		.style("top", tooltipY+"px");
+      		// .style("left", tooltipX+"px")
+      		// .style("top", tooltipY+"px");
   })
   	.on("mouseout", function(d,i) {
     	d3.select(this).attr("r",5);
     	tooltip.transition()
-      		.duration(500)
+      		.duration(600)
       		.style("opacity", 0)
   });
 }
@@ -150,31 +150,31 @@ var maxCal = 700;
 var values;
 
 $(function() {
-    $( "#caff" ).slider({
+    $("#caff").slider({
         range: true,
-      	min:  0,
+      	min: 0,
       	max: maxCaff,
-      	values: [ 0, maxCaff ],
-      	slide: function( event, ui ) {
-        	$( "#caffamount" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+      	values: [0, maxCaff],
+      	slide: function(event, ui) {
+        	$("#caffamount").val( ui.values[0] + " - " + ui.values[1]);
         	filterData("Caffeine", ui.values);
       	}
     });
-    $( "#caffamount" ).val( $( "#caff" ).slider( "values", 0 ) + " - " + $( "#caff" ).slider( "values", 1 ) );
+    $("#caffamount").val( $("#caff").slider("values", 0) + " - " + $("#caff").slider("values", 1));
 });
 
 $(function() {
-    $( "#cal" ).slider({
+    $("#cal").slider({
         range: true,
-      	min:  0,
+      	min: 0,
       	max: maxCal,
-      	values: [ 0, maxCal ],
-      	slide: function( event, ui ) {
-        	$( "#calamount" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+      	values: [0, maxCal],
+      	slide: function(event, ui) {
+        	$("#calamount").val( ui.values[0] + " - " + ui.values[1]);
         	filterData("Calories", ui.values);
       	}
     });
-    $( "#calamount" ).val( $( "#cal" ).slider( "values", 0 ) + " - " + $( "#cal" ).slider( "values", 1 ) );
+    $("#calamount").val( $("#cal").slider("values", 0) + " - " + $("#cal").slider("values", 1));
 });
 
 function filterData(attr, values){

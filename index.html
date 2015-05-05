@@ -4,31 +4,26 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Caffeine vs. Calories</title>
+		<link rel="icon" type="image/png" href="coffee-icon.png">
 	</head>
 <body class="row">
-
 	<main class="container-fluid">
 		<header class="row"></header>
-
 		<div class="row">
-			<div class="col-sm-8" id="graph">
-
-			</div>
+			<div class="col-sm-8" id="graph"></div>
 
 			<div class="col-sm-3" id="interactions">
-
-				<p>Caffeine</p>
+				<tooltip></tooltip>	
+				<h4>Caffeine</h4>
 				<div id="caff" class="slider-range"></div>
 				<label for="caffamount">Caffeine Range:</label>
 				<input type="text" id="caffamount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-
-				<p>Calories</p>
+				<h4>Calories</h4>
 				<div id="cal" class="slider-range"></div>
 				<label for="calamount">Calories Range:</label>
 				<input type="text" id="calamount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-
-				<label for = "type" >Beverage Type</label>
-					<input type="text" id="mytype" id="bev" readonly style = "border:0; color:#f6931f; font-weight:bold;"><br>
+				<h4>Beverage Type</h4>
+					<input type="text" id="mytype" readonly style = "border:0; color:#f6931f; font-weight:bold;"><br>
 						<select id = "myselectform">
 							<option value = "All">All</option>
 							<option value = "Coffee">Coffee</option>
@@ -44,12 +39,9 @@
 							<option value = "Tea Latte">Tea Latte</option>
 						</select>				
 			</div>
-
 		</div>
-
 		<footer class="row"></footer>
 	</main>
-
 	<!-- D3, jQuery, jQuery UI, jQuery CSS, Bootstrap links -->
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
@@ -61,7 +53,5 @@
 	<!-- Local Javascript and CSS scripts -->
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script type="text/javascript" src="caff.js"></script>
-
-
 </body>
 </html>
