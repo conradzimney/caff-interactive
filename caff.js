@@ -1,6 +1,6 @@
-var margin = {top: 20, right: 20, bottom: 30, left: 50};
+var margin = {top: 20, right: 20, bottom: 60, left: 50};
 var w = 750 - margin.left - margin.right;
-var h = 500 - margin.top - margin.bottom;
+var h = 708 - margin.top - margin.bottom;
 
 // var tooltipX = 778;
 // var tooltipY = 79;
@@ -34,18 +34,20 @@ svg.append("g")
     .attr("transform", "translate(0," + h + ")")
     .call(xAxis)
   .append("text")
-    .attr("x", w/2)
-    .attr("y", 28)
+    .attr("x", w/2+14)
+    .attr("y", 34)
     .style("text-anchor", "end")
+    .style("font-size", "14px")
     .text("Caffeine (milligrams)");
 svg.append("g")
     .attr("class", "axis")
     .call(yAxis)
   .append("text")
-    .attr("transform", "translate(45,0)")
+    .attr("transform", "translate(55,0)")
     .attr("y", 6)
     .attr("dy",".71em")
     .style("text-anchor", "end")
+    .style("font-size", "14px")
     .text("Calories");
 
 // Loading data from CSV: 
@@ -109,17 +111,15 @@ function drawVis(data) {
   	.on("mouseover", function(d,i) {
     	d3.select(this).attr("r", 9);
     	tooltip.transition()
-      	.duration(300)
+      	.duration(400)
       	.style("opacity", 1);
-    	tooltip.html("<b>"+d.Coffee+"</b><br>Calories: "+d.Calories+"<br>Caffeine: "+d.Caffeine) // This will need more info later
-      		// .style("left", tooltipX+"px")
-      		// .style("top", tooltipY+"px");
+    	tooltip.html("<b>"+d.Coffee+"</b><br>Calories: "+d.Calories+"<br>Caffeine: "+d.Caffeine+"<br>Type: "+d.Type);
   })
   	.on("mouseout", function(d,i) {
     	d3.select(this).attr("r",5);
     	tooltip.transition()
-      		.duration(600)
-      		.style("opacity", 0)
+      		.duration(800)
+      		.style("opacity", 0);
   });
 }
 

@@ -12,7 +12,8 @@
 		<div class="row">
 			<div class="col-sm-8" id="graph"></div>
 
-			<div class="col-sm-3" id="interactions">
+			<div class="col-sm-3">
+				<div id="interactions">
 				<tooltip></tooltip>	
 				<h4>Caffeine</h4>
 				<div id="caff" class="slider-range"></div>
@@ -23,7 +24,7 @@
 				<label for="calamount">Calories Range:</label>
 				<input type="text" id="calamount" readonly style="border:0; color:#f6931f; font-weight:bold;">
 				<h4>Beverage Type</h4>
-					<input type="text" id="mytype" readonly style = "border:0; color:#f6931f; font-weight:bold;"><br>
+					<!--<input type="text" id="mytype" readonly style = "border:0; color:#f6931f; font-weight:bold;"> <br>-->
 						<select id = "myselectform">
 							<option value = "All">All</option>
 							<option value = "Coffee">Coffee</option>
@@ -37,7 +38,13 @@
 							<option value = "Steamed Drink">Steamed Drink</option>
 							<option value = "Tea">Tea</option>
 							<option value = "Tea Latte">Tea Latte</option>
-						</select>				
+						</select><br>
+				</div>
+
+				<div id="legend">
+					<h4>Legend</h4>
+					<br>
+				</div>				
 			</div>
 		</div>
 		<footer class="row"></footer>
